@@ -245,7 +245,7 @@ The SoW never mentioned anything about not hacking the desolator machine. So why
 
 If you look back at the documentation file, you see that /api/v1/connection is deemed insecure. It takes the parameter ip and it pings the specified ip address. This took me a lot longer than it should've. 
 
-So, we know that the machine is linux because of nmap. We also know that it takes parameters to send ping requests. So, we can make the assumption that we can use basic linux syntax to manipulate the url. What are some linux "symbols" that can be used to move on to the next line of code? My second third thought was the || symbol which stands for OR in bash. So, with this, how can we make it so that the command moves onto the next code? Well we have to make it so the first command is false/invalid.
+So, we know that the machine is linux because of nmap. We also know that it takes parameters to send ping requests. So, we can make the assumption that we can use basic linux syntax to manipulate the url. What are some linux "symbols" that can be used to move on to the next line of code? My second third thought was the "||" symbol which stands for OR in bash. So, with this, how can we make it so that the command moves onto the next code? Well we have to make it so the first command is false/invalid.
 
 We can provide an invalid ip address by basically typing anything. So our syntax will be:
 ~~~
