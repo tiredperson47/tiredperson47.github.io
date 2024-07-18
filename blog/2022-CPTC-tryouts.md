@@ -9,8 +9,8 @@ image: /assets/img/2022-CPTC.png
 
   <link rel="stylesheet" href="/style.css">
   <div class="hero-container">
-	<h1 class="hero glitch layers" data-text="CPTC 2022 Tryouts" style="position: absolute; top: 0px; left: 0px; margin-top: 0px;">
-  	<span>CPTC 2022 Tryouts</span></h1>
+	<h1 class="hero glitch layers" data-text="CPTC Tryouts 2022" style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); margin-top: 0px;">
+  	<span>CPTC Tryouts 2022</span></h1>
   </div>
 
 </section>
