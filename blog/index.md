@@ -44,7 +44,7 @@ cover: true
     }
 </style>
 
-<h2 class="header">Collegiate Penetration Testing Competition (CPTC))</h2>
+<h2 class="header">Collegiate Penetration Testing Competition (CPTC)</h2>
 ---
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
 
@@ -65,9 +65,9 @@ cover: true
 <div style="width: 400px;">
   <div style="flex: 1 1 calc(50% - 10px); box-sizing: border-box; position: relative; height: 400px;">
     <a href="https://tiredperson47.github.io/blog/2022-CPTC-tryouts" style="display: block; position: relative; height: 100%; width: 100%;">
-      <img src="/assets/img/2022-CPTC.png" alt="Test Blog" style="width: 100%; height: 100%; max-height: 275px; object-fit: cover; border-radius: 8px;"/>
+      <img src="/assets/img/2022-CPTC.png" alt="CPTC Tryouts 2022" style="width: 100%; height: 100%; max-height: 275px; object-fit: cover; border-radius: 8px;"/>
      <div style="padding: 1em; background: #505050; color: white; border-radius: 0 0 8px 8px; position: absolute; bottom: 0; left: 0; right: 0; max-height: 130px; overflow-y: auto;">
-        <h3 style="margin-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Test Blog</h3>
+        <h3 style="margin-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CPTC Tryouts 2022</h3>
         <p style="white-space: normal; margin: 0;">This is a write up about the 2022 CPTC tryouts that Cal Poly Pomona hosted after the bootcamps. This is an old environment that I had the privilege of practicing on thanks to my mentor, Derrick Tran.</p>
       </div>
     </a>
