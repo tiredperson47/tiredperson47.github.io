@@ -133,15 +133,15 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
             {/* Rating Filter */}
             <div>
               <p className={`text-xs mono uppercase mb-3 ${theme === 'light' ? 'text-gray-600' : 'text-[#8b949e]'}`}>Rating</p>
-              <div className={`flex space-x-2 p-4 rounded-lg border ${theme === 'light' ? 'bg-gray-200 border-gray-300' : 'bg-[#21262d] border-[#30363d]'}`}>
+              <div className={`grid grid-cols-5 gap-2 p-3 md:p-4 rounded-lg border ${theme === 'light' ? 'bg-gray-200 border-gray-300' : 'bg-[#21262d] border-[#30363d]'}`}>
                 {[1, 2, 3, 4, 5].map(rating => (
                   <button
                     key={rating}
                     onClick={() => toggleRating(rating)}
-                    className="group"
+                    className="group w-full"
                   >
                     <div 
-                      className={`h-6 w-20 rounded-full transition-all ${
+                      className={`h-4 md:h-6 w-full rounded-full transition-all ${
                         selectedRating !== null && rating <= selectedRating
                           ? theme === 'light' ? 'bg-blue-500' : 'bg-[#00f5d4]'
                           : theme === 'light' ? 'bg-gray-400 group-hover:bg-gray-500' : 'bg-[#30363d] group-hover:bg-[#484f58]'

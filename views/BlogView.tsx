@@ -40,13 +40,22 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
       .catch(() => setContent('# Error loading blog'));
   }, [index]);
 
+  useEffect(() => {
+    const handleScrollTop = () => {
+      scrollToTop();
+    };
+
+    window.addEventListener('blog:scroll-top', handleScrollTop);
+    return () => window.removeEventListener('blog:scroll-top', handleScrollTop);
+  }, []);
+
   return (
-    <div className="h-[calc(100vh-80px)] w-full flex flex-col relative -m-4 md:-m-6 -mb-8">
+    <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-80px)] w-full flex flex-col relative m-0 md:-m-6 md:-mb-8">
 
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed right-8 bottom-20 w-10 h-10 rounded-lg bg-[#00f5d4] text-[#010409] flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 z-50 ${
+        className={`hidden md:flex fixed right-8 bottom-20 w-10 h-10 rounded-lg bg-[#00f5d4] text-[#010409] items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 z-50 ${
           showBackToTop ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         title="Back to Top"
@@ -58,30 +67,32 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
       <div 
         ref={contentContainerRef}
         onScroll={handleScroll}
-        className="flex-1 overflow-y-auto scroll-smooth flex flex-col p-4 md:p-6"
+        className="flex-1 overflow-y-auto scroll-smooth flex flex-col p-0 md:p-6"
       >
         <div className="w-full flex flex-col flex-1">
-        <div className="bg-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl rounded-xl flex-1 flex flex-col">
-          <div className="h-12 border-b border-[#30363d] bg-[#161b22] rounded-t-xl px-4 flex items-center justify-between">
+        <div className="bg-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl rounded-none md:rounded-xl flex-1 flex flex-col">
+          <div className="h-12 border-b border-[#30363d] bg-[#161b22] md:rounded-t-xl px-3 md:px-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <FileText size={14} className="text-[#00f5d4]" />
-              <span className="text-[14px] font-bold mono text-[#00f5d4]">{BLOGS[Number(index)]?.title}</span>
+              <span className="text-[12px] md:text-[14px] font-bold mono text-[#00f5d4] truncate">{BLOGS[Number(index)]?.title}</span>
             </div>
-            <button
-              onClick={() => navigate('/blogs')}
-              className="flex items-center space-x-2 text-red-500 hover:text-red-400 transition-colors group"
-            >
-              <span className="text-[14px] mono font-bold uppercase group-hover:underline">
-                Exit
-              </span>
-              <X size={16} />
-            </button>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => navigate('/blogs')}
+                className="flex items-center space-x-2 text-red-500 hover:text-red-400 transition-colors group"
+              >
+                <span className="text-[12px] md:text-[14px] mono font-bold uppercase group-hover:underline">
+                  Exit
+                </span>
+                <X size={16} />
+              </button>
+            </div>
           </div>
           <div className="h-2 bg-[#00f5d4] w-full" />
 
           <div
             className="
-              p-8 md:p-12
+              p-4 md:p-12
               prose prose-invert max-w-none
               flex-1 overflow-y-auto
 

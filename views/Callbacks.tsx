@@ -102,8 +102,8 @@ const Callbacks: React.FC<CallbacksProps> = ({ theme }) => {
   };
 
   return (
-    <div className="h-full flex flex-col space-y-4 animate-in fade-in zoom-in-95 duration-500 relative">
-      <div className="flex-1 bg-[#010409] border border-[#30363d] rounded-lg overflow-hidden flex flex-col shadow-2xl">
+    <div className="h-full min-h-0 flex flex-col gap-4 animate-in fade-in zoom-in-95 duration-500 relative">
+      <div className="flex-1 min-h-0 bg-[#010409] border border-[#30363d] rounded-lg overflow-hidden flex flex-col shadow-2xl">
         {/* Terminal Header */}
         <div className="h-8 bg-[#161b22] border-b border-[#30363d] px-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -111,16 +111,17 @@ const Callbacks: React.FC<CallbacksProps> = ({ theme }) => {
             <div className="w-2.5 h-2.5 rounded-full bg-[#d29922]"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-[#3fb950]"></div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 min-w-0">
             <TerminalIcon size={12} className="text-[#8b949e]" />
-            <span className="text-[10px] mono text-[#8b949e]">operator-console -- session-0x534C45455059</span>
+            <span className="text-[9px] md:text-[10px] mono text-[#8b949e] truncate">operator-console -- session-0x534C45455059</span>
           </div>
         </div>
 
         {/* Output */}
         <div 
           ref={scrollRef}
-          className="flex-1 p-4 overflow-y-auto mono text-sm scroll-smooth leading-relaxed"
+          className="flex-1 min-h-0 p-3 md:p-4 overflow-y-auto mono text-[11px] md:text-sm scroll-smooth leading-relaxed"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {history.map((line, i) => (
             <div 
@@ -138,11 +139,14 @@ const Callbacks: React.FC<CallbacksProps> = ({ theme }) => {
         </div>
 
         {/* Command Line */}
-        <form onSubmit={handleCommand} className="p-3 border-t border-[#30363d] flex items-center bg-[#0d1117]">
-          <span className="text-[#00f5d4] mono mr-2 font-bold tracking-tighter">root@tiredperson:~$</span>
+        <form onSubmit={handleCommand} className="p-2 md:p-3 border-t border-[#30363d] flex items-center bg-[#0d1117] gap-2 min-w-0">
+          <span className="text-[#00f5d4] mono font-bold tracking-tighter text-[10px] md:text-sm whitespace-nowrap">
+            <span className="hidden md:inline">root@tiredperson:~$</span>
+            <span className="md:hidden">root@tiredperson:~$</span>
+          </span>
           <input 
             type="text"
-            className="flex-1 bg-transparent border-none outline-none text-[#e6edf3] mono text-sm caret-[#00f5d4]"
+            className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#e6edf3] mono text-sm caret-[#00f5d4]"
             autoFocus
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -152,7 +156,7 @@ const Callbacks: React.FC<CallbacksProps> = ({ theme }) => {
       </div>
 
       {/* Social Overlay */}
-      <div className={`grid grid-cols-1 transition-all duration-700 ease-in-out ${showSocials ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className={`grid grid-cols-1 transition-all duration-700 ease-in-out ${showSocials ? 'max-h-32 md:max-h-48 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="bg-[#161b22] border border-[#30363d] rounded-lg flex flex-col h-full shadow-lg">
           <div className="p-2 border-b border-[#30363d] flex justify-between items-center bg-[#0d1117]/50">
             <span className="text-[9px] font-bold mono text-[#00f5d4] uppercase px-2">Operator_Handshake.protocol</span>
