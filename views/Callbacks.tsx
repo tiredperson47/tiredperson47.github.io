@@ -120,7 +120,7 @@ const Callbacks: React.FC<CallbacksProps> = ({ theme }) => {
         {/* Output */}
         <div 
           ref={scrollRef}
-          className="flex-1 min-h-0 p-3 md:p-4 overflow-y-auto mono text-[11px] md:text-sm scroll-smooth leading-relaxed"
+          className="flex-1 min-h-0 p-3 md:p-4 overflow-y-auto scrollable mono text-[11px] md:text-sm scroll-smooth leading-relaxed"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {history.map((line, i) => (

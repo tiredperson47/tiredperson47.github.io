@@ -67,7 +67,7 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
       <div 
         ref={contentContainerRef}
         onScroll={handleScroll}
-        className="flex-1 overflow-y-auto scroll-smooth flex flex-col p-0 md:p-6"
+        className="flex-1 overflow-y-auto scrollable scroll-smooth flex flex-col p-0 md:p-6"
       >
         <div className="w-full flex flex-col flex-1">
         <div className="bg-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl rounded-none md:rounded-xl flex-1 flex flex-col">

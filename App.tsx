@@ -84,7 +84,7 @@ const MainLayout: React.FC = () => {
       />
       <div className="flex-1 flex flex-col min-w-0 transition-all duration-300 order-1 md:order-2">
         <Header title={getPageTitle()} isMobile={isMobile} />
-        <main className="flex-1 min-h-0 overflow-y-auto p-4 md:p-6 scroll-smooth relative pb-24 md:pb-0">
+        <main className="flex-1 min-h-0 overflow-y-auto scrollable p-4 md:p-6 scroll-smooth relative pb-24 md:pb-0">
           <Routes>
             <Route path="/" element={<Operators theme={theme} />} />
             <Route path="/blogs" element={<Callbacks theme={theme} />} />
