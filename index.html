@@ -7,13 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        html, body, #root {
+            height: 100%;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
             color: #e6edf3;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scrollable {
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
@@ -84,7 +93,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-D7T1vHl7.js"></script>
+  <script type="module" crossorigin src="/assets/index-DNc_XJ_p.js"></script>
 </head>
 <body>
     <div id="root"></div>
