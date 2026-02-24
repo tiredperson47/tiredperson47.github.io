@@ -100,7 +100,7 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-1000">
+    <div className="min-h-0 space-y-6 animate-in fade-in duration-1000">
       {/* Filter Section */}
       <div className={`${theme === 'light' ? 'bg-gray-100 border-gray-300' : 'bg-[#161b22] border-[#30363d]'} border rounded-xl overflow-hidden`}>
         <div className={`flex items-center justify-between p-6 cursor-pointer ${theme === 'light' ? 'hover:bg-gray-200' : 'hover:bg-[#21262d]/50'} transition-colors`} onClick={() => setIsFiltersOpen(!isFiltersOpen)}>

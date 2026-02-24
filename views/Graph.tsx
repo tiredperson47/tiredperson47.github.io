@@ -99,6 +99,31 @@ const Graph: React.FC = () => {
     setScale(prev => Math.min(2, Math.max(0.4, prev - e.deltaY * 0.001)));
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
+    dragging.current = true;
+    lastPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!dragging.current || e.touches.length !== 1) return;
+    e.preventDefault();
+
+    const dx = e.touches[0].clientX - lastPos.current.x;
+    const dy = e.touches[0].clientY - lastPos.current.y;
+
+    setOffset(prev => ({
+      x: prev.x + dx,
+      y: prev.y + dy
+    }));
+
+    lastPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+
+  const onTouchEnd = () => {
+    dragging.current = false;
+  };
+
   return (
     <div className="h-full flex flex-col lg:flex-row gap-6 animate-in slide-in-from-right-4 duration-700">
       {/* Visual Graph View */}
@@ -127,6 +152,10 @@ const Graph: React.FC = () => {
           onMouseUp={onMouseUp}
           onMouseLeave={onMouseUp}
           onWheel={onWheel}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          style={{ touchAction: 'none' }}
         >
           <div
             className="absolute inset-0"
