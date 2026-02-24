@@ -100,10 +100,11 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
   };
 
   return (
-    <div className="min-h-0 space-y-6 animate-in fade-in duration-1000">
-      {/* Filter Section */}
-      <div className={`${theme === 'light' ? 'bg-gray-100 border-gray-300' : 'bg-[#161b22] border-[#30363d]'} border rounded-xl overflow-hidden`}>
-        <div className={`flex items-center justify-between p-6 cursor-pointer ${theme === 'light' ? 'hover:bg-gray-200' : 'hover:bg-[#21262d]/50'} transition-colors`} onClick={() => setIsFiltersOpen(!isFiltersOpen)}>
+    <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-80px)] w-full flex flex-col relative">
+      <div className="flex-1 overflow-y-auto scrollable scroll-smooth flex flex-col space-y-6 animate-in fade-in duration-1000">
+        {/* Filter Section */}
+        <div className={`${theme === 'light' ? 'bg-gray-100 border-gray-300' : 'bg-[#161b22] border-[#30363d]'} border rounded-xl overflow-hidden flex-none`}>
+          <div className={`flex items-center justify-between p-6 cursor-pointer ${theme === 'light' ? 'hover:bg-gray-200' : 'hover:bg-[#21262d]/50'} transition-colors`} onClick={() => setIsFiltersOpen(!isFiltersOpen)}>
           <div className="flex items-center space-x-3">
             <h2 className={`text-lg font-bold mono uppercase ${theme === 'light' ? 'text-blue-600' : 'text-[#00f5d4]'}`}>Filters</h2>
             {(selectedTags.length > 0 || selectedRating !== null) && (
@@ -183,125 +184,129 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
             </div>
           </div>
         )}
-      </div>
+        </div>
 
-      {/* Artifacts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginatedArtifacts.map((artifact) => {
-          const originalIndex = ARTIFACTS.findIndex(a => a.id === artifact.id);
-          return (
-          <div 
-            key={artifact.id}
-            className="group relative bg-[#161b22] border border-[#30363d] rounded-xl overflow-hidden cursor-crosshair transition-all hover:border-[#00f5d4]/50"
-            onClick={() => setSelected(originalIndex)}
-          >
-            <div className="aspect-video overflow-hidden">
-              <img 
-                src={artifact.url} 
-                alt={artifact.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-              />
-            </div>
-            
-            {/* Overlay Info */}
-            <div className="p-4 bg-[#161b22]">
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <h3 className="text-sm font-bold uppercase mono tracking-wider text-[#e6edf3]">{artifact.title}</h3>
-                  <h3 className="text-sm font-bold uppercase mono tracking-wider text-[#e6edf3]">ID: {formatID(artifact.id)}</h3>
+        {/* Artifacts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-none">
+          {paginatedArtifacts.map((artifact) => {
+            const originalIndex = ARTIFACTS.findIndex(a => a.id === artifact.id);
+            return (
+            <div 
+              key={artifact.id}
+              className="group relative bg-[#161b22] border border-[#30363d] rounded-xl overflow-hidden cursor-crosshair transition-all hover:border-[#00f5d4]/50"
+              onClick={() => setSelected(originalIndex)}
+            >
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={artifact.url} 
+                  alt={artifact.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                />
+              </div>
+              
+              {/* Overlay Info */}
+              <div className="p-4 bg-[#161b22]">
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase mono tracking-wider text-[#e6edf3]">{artifact.title}</h3>
+                    <h3 className="text-sm font-bold uppercase mono tracking-wider text-[#e6edf3]">ID: {formatID(artifact.id)}</h3>
+                  </div>
+                  <Maximize2 size={16} className="text-[#8b949e] group-hover:text-[#00f5d4]" />
                 </div>
-                <Maximize2 size={16} className="text-[#8b949e] group-hover:text-[#00f5d4]" />
+              </div>
+
+              {/* Scanning Line Effect */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity">
+                <div className="w-full h-[2px] bg-[#00f5d4] absolute top-0 animate-scan"></div>
               </div>
             </div>
-
-            {/* Scanning Line Effect */}
-            <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity">
-              <div className="w-full h-[2px] bg-[#00f5d4] absolute top-0 animate-scan"></div>
-            </div>
-          </div>
-        );})}
-      </div>
+          );})}
+        </div>
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center space-x-2">
-          <button
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-            disabled={currentPage === 1}
-            className="px-4 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            ← Prev
-          </button>
-          
-          <div className="flex space-x-1">
-            {/* Show first page */}
-            {currentPage > 3 && (
-              <>
-                <button
-                  onClick={() => setCurrentPage(1)}
-                  className="px-3 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] transition-all"
-                >
-                  1
-                </button>
-                {currentPage > 4 && (
-                  <span className="px-3 py-2 text-[#8b949e]">...</span>
-                )}
-              </>
-            )}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center space-x-2 flex-none">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              ← Prev
+            </button>
             
-            {/* Show pages around current page */}
-            {Array.from({ length: totalPages }, (_, i) => i + 1)
-              .filter(page => Math.abs(page - currentPage) <= 2)
-              .map(page => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`px-3 py-2 rounded-lg mono text-sm transition-all ${
-                    currentPage === page
-                      ? 'bg-[#00f5d4] text-[#0d1117] font-bold'
-                      : 'bg-[#21262d] text-[#8b949e] hover:bg-[#30363d]'
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+            <div className="flex space-x-1">
+              {/* Show first page */}
+              {currentPage > 3 && (
+                <>
+                  <button
+                    onClick={() => setCurrentPage(1)}
+                    className="px-3 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] transition-all"
+                  >
+                    1
+                  </button>
+                  {currentPage > 4 && (
+                    <span className="px-3 py-2 text-[#8b949e]">...</span>
+                  )}
+                </>
+              )}
+              
+              {/* Show pages around current page */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .filter(page => Math.abs(page - currentPage) <= 2)
+                .map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`px-3 py-2 rounded-lg mono text-sm transition-all ${
+                      currentPage === page
+                        ? 'bg-[#00f5d4] text-[#0d1117] font-bold'
+                        : 'bg-[#21262d] text-[#8b949e] hover:bg-[#30363d]'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              
+              {/* Show last page */}
+              {currentPage < totalPages - 2 && (
+                <>
+                  {currentPage < totalPages - 3 && (
+                    <span className="px-3 py-2 text-[#8b949e]">...</span>
+                  )}
+                  <button
+                    onClick={() => setCurrentPage(totalPages)}
+                    className="px-3 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] transition-all"
+                  >
+                    {totalPages}
+                  </button>
+                </>
+              )}
+            </div>
             
-            {/* Show last page */}
-            {currentPage < totalPages - 2 && (
-              <>
-                {currentPage < totalPages - 3 && (
-                  <span className="px-3 py-2 text-[#8b949e]">...</span>
-                )}
-                <button
-                  onClick={() => setCurrentPage(totalPages)}
-                  className="px-3 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] transition-all"
-                >
-                  {totalPages}
-                </button>
-              </>
-            )}
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Next →
+            </button>
           </div>
-          
-          <button
-            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-[#21262d] text-[#8b949e] rounded-lg mono text-sm hover:bg-[#30363d] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            Next →
-          </button>
-        </div>
-      )}
+        )}
 
       {/* No Results Message */}
-      {filteredArtifacts.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-[#8b949e] mono text-sm">No artifacts match the selected filters.</p>
-        </div>
-      )}
+        {filteredArtifacts.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-[#8b949e] mono text-sm">No artifacts match the selected filters.</p>
+          </div>
+        )}
+      </div>
 
       {/* Lightbox */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0d1117]/95 p-4 backdrop-blur-sm animate-in fade-in duration-300">
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center bg-[#0d1117]/95 p-4 backdrop-blur-sm animate-in fade-in duration-300 overflow-y-auto scrollable"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           <button 
             onClick={() => setSelected(null)}
             className="absolute top-6 right-6 text-[#8b949e] hover:text-[#e6edf3] transition-colors"
@@ -323,7 +328,7 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
             →
           </button>
 
-          <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-4 gap-8 my-8">
             <div className="lg:col-span-3 bg-[#161b22] border border-[#30363d] rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src={selected.url} 
@@ -331,7 +336,10 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
                 className="w-full h-full object-contain max-h-[80vh]"
               />
             </div>
-            <div className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6 flex flex-col">
+            <div
+              className="bg-[#161b22] border border-[#30363d] rounded-2xl p-6 flex flex-col max-h-[80vh] md:max-h-none overflow-y-auto scrollable"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
               <div className="flex items-center space-x-2 text-[#00f5d4] mb-6">
                 <Info size={20} />
                 <h2 className="font-bold mono uppercase">Metadata</h2>
