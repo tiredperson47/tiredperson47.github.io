@@ -6,7 +6,7 @@
 5. [ELF Loader](#elf-loader)
 6. [Creating Shellcode](#creating-shellcode)
 7. [Detection](#detection)
-8. [Summaruy](#summary)
+8. [Summary](#summary)
 
 # Introduction
 
