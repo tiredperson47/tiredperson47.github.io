@@ -13,12 +13,12 @@ My name is Ryan Wong and I am currently attending Cal Poly Pomona with a focus o
 
 I primarily focus on:
 - Malware Development (Golang, C, Python)
-- Linux Stuff
+- A lot of Linux Stuff
 - Windows Exploitation
 - Maybe some web stuff
 - Whatever else piques my interest
 
-If you can't tell, I'm a jack of all trades and master of none...
+I do some interesting stuff so be sure to read about it.
 `;
 
 const Operators: React.FC<OperatorsProps> = ({ theme = 'dark' }) => {

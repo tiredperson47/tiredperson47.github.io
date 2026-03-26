@@ -27,6 +27,14 @@ export const BLOGS: BlogPost[] = [
     date: "2024-05-30",
     author: "TiredPerson",
     content: "/blogs/1/Authority.md"
+  },
+  {
+    id: "2",
+    title: "SHELF Loading",
+    summary: "SHELF Loading is the Linux equivalent of Windows reflective DLL loading. By manually injecting shellcode of an ELF loader, attackers can avoid use of the execve family and load payloads directly into memory. It provides a stealthy method for executing malicious code without touching the disk, making it an effective technique for evading traditional antivirus and endpoint detection systems.",
+    date: "2026-03-25",
+    author: "TiredPerson",
+    content: "/blogs/2/SHELF_Loading.md"
   }
 ];
 

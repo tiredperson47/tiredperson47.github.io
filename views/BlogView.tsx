@@ -49,6 +49,24 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
     return () => window.removeEventListener('blog:scroll-top', handleScrollTop);
   }, []);
 
+  const parseImageSizing = (title?: string) => {
+    if (!title) return { cleanTitle: undefined, width: undefined as string | undefined, height: undefined as string | undefined };
+
+    const widthMatch = title.match(/(?:^|\s)w(?:idth)?\s*=\s*([0-9]+(?:px|%)?)/i);
+    const heightMatch = title.match(/(?:^|\s)h(?:eight)?\s*=\s*([0-9]+(?:px|%)?)/i);
+
+    const cleanTitle = title
+      .replace(/(?:^|\s)w(?:idth)?\s*=\s*[0-9]+(?:px|%)?/gi, '')
+      .replace(/(?:^|\s)h(?:eight)?\s*=\s*[0-9]+(?:px|%)?/gi, '')
+      .trim();
+
+    return {
+      cleanTitle: cleanTitle || undefined,
+      width: widthMatch?.[1],
+      height: heightMatch?.[1],
+    };
+  };
+
   return (
     <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-80px)] w-full flex flex-col relative m-0 md:-m-6 md:-mb-8">
 
@@ -94,6 +112,7 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
             className="
               p-4 md:p-12
               prose prose-invert max-w-none
+              select-text
               flex-1 overflow-y-auto
 
               prose-a:relative
@@ -150,9 +169,20 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
                 blockquote: ({node, ...props}) => (
                   <blockquote className="border-l-4 border-[#00f5d4] pl-4 italic my-6 text-[#00f5d4]/80 bg-[#00f5d4]/5 py-2" {...props} />
                 ),
-                img: ({node, ...props}) => (
-                  <img className="rounded-lg border border-[#30363d] my-8 w-full object-cover" {...props} />
-                ),
+                img: ({node, ...props}) => {
+                  const { cleanTitle, width, height } = parseImageSizing(props.title);
+                  return (
+                    <img
+                      {...props}
+                      title={cleanTitle}
+                      className="rounded-lg border border-[#30363d] my-8 w-full max-w-3xl h-auto object-contain mx-auto"
+                      style={{
+                        width: width || undefined,
+                        height: height || undefined,
+                      }}
+                    />
+                  );
+                },
                 pre: ({node, ...props}) => (
                   <pre className="bg-[#010409] border border-[#30363d] p-4 rounded-lg overflow-x-auto my-6" {...props} />
                 ),
