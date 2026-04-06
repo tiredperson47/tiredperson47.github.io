@@ -9,12 +9,12 @@ interface OperatorsProps {
 const ABOUT_MD = `
 # About Me
 
-My name is Ryan Wong and I am currently attending Cal Poly Pomona with a focus on Offensive Security. A lot of my skills were self-taught through practice and competitions. I've previously did R&D and internal engagements as an Adversary Simulation Intern at TikTok USDS. This blog documents some cool things I've been up to (that I happen to feel like writing about) so feel free to read some stuff.
+My name is Ryan Wong and I am currently attending Cal Poly Pomona with a focus on Offensive Security. This blog serves as a place to record my cyber journey. It contains writeups, projects, and whatever else I find interesting at the moment. There's also my photography gallery if you're into that as well.
 
 I primarily focus on:
 - Malware Development (Golang, C, Python)
 - A lot of Linux Stuff
-- Windows Exploitation
+- A bit of Windows Exploitation
 - Maybe some web stuff
 - Whatever else piques my interest
 

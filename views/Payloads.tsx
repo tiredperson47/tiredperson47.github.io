@@ -1,6 +1,6 @@
 import React from 'react';
 import { FileText, Download, ExternalLink } from 'lucide-react';
-const RESUME_URL = "https://drive.google.com/file/d/11TpSPW9EOd-jx6X8crFzSpYg6-NX9bo8/view?usp=sharing";
+const RESUME_URL = "https://drive.google.com/file/d/13ZHyI_Csa-ezAzw5GvM0ZvK8jf1F9JQB/view?usp=drive_link";
 
 const Payloads: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Payloads: React.FC = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold tracking-tight text-[#e6edf3]">RESUME.PDF</h1>
-                <p className="text-[#8b949e] mono text-sm uppercase tracking-widest">Version: v2026.04</p>
+                <p className="text-[#8b949e] mono text-sm uppercase tracking-widest">Version: v2026.05</p>
               </div>
             </div>
             
@@ -28,7 +28,7 @@ const Payloads: React.FC = () => {
               <button onClick={() => window.open(RESUME_URL, "_blank", "noopener,noreferrer")}
                 className="flex items-center space-x-2 bg-[#00f5d4] hover:bg-[#00f5d4]/80 text-[#0d1117] px-4 py-2 rounded-xl transition-all font-bold text-xs uppercase mono shadow-[0_0_15px_rgba(0,245,212,0.3)]">
                 <ExternalLink size={16} />
-                <span>Open in Viewer</span>
+                <span>Open in New Tab</span>
               </button>
             </div>
           </div>

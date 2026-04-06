@@ -19,7 +19,7 @@ const Artifacts: React.FC<ArtifactsProps> = ({ theme = 'dark' }) => {
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
-  const itemsPerPage = 18;
+  const itemsPerPage = 15;
 
   // Apply tag filter from navigation state on mount
   useEffect(() => {
