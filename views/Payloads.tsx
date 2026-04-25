@@ -25,10 +25,10 @@ const Payloads: React.FC = () => {
                 <Download size={16} />
                 <span>Download</span>
               </button> */}
-              <button onClick={() => window.open(RESUME_URL, "_blank", "noopener,noreferrer")}
+              <button onClick={() => { window.location.href = RESUME_URL; }}
                 className="flex items-center space-x-2 bg-[#00f5d4] hover:bg-[#00f5d4]/80 text-[#0d1117] px-4 py-2 rounded-xl transition-all font-bold text-xs uppercase mono shadow-[0_0_15px_rgba(0,245,212,0.3)]">
                 <ExternalLink size={16} />
-                <span>Open in New Tab</span>
+                <span>Open Resume</span>
               </button>
             </div>
           </div>

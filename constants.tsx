@@ -46,76 +46,88 @@ export const ROADMAP: RoadmapNode[] = [
     x: 100, y: 1200, from: '1', to: ''
   },
   {
+    id: '11', label: 'SWIFT', category: 'club', status: 'in-progress',
+    description: "SWIFT (Students With an Interest in the Future of Technology) is the cybersecurity club at Cal Poly Pomona. I became the Director of Competitions and created fun environments for members to compete and learn cybersecurity skills.",
+    gained: ['Recreated known vulnerabilities', 'Hosted CCDC/CPTC bootcamps', 'Directed club competitions', "Hosted RvB competitions for college teams from across the nation"],
+    x: 200, y: 1200, from: '1', to: '11'
+  },
+  {
     id: '2', label: 'NCAE Cybergames', category: 'competition', status: 'completed',
     description: 'NCAE cybergames is a beginner level collegiate competition that focuses on blue team/incident response and CTF skills.',
     gained: ['Second place nationals', 'Linux incident response skills', 'Linux forensics analysis', 'Set up simple services'],
-    x: 250, y: 1100, from: '1', to: '2'
+    x: 300, y: 1100, from: '11', to: '2'
   },
   {
     id: '3', label: 'HTB Pro Labs', category: 'certification', status: 'completed',
     description: 'Hack the Box Pro Labs are full penetration testing environments that tests you in varius aspects of Adverysary Simulation. It primarily focuses on Active Directory exploitation with a few Linux machines mixed in.',
     gained: ['Solidified Penetration Testing methodology', 'Exposed to various AD exploitation techniques', 'Proxying through multiple machines'],
-    x: 500, y: 1200, from: '7', to: '3'
+    x: 550, y: 1200, from: '7', to: '3'
   },
   {
     id: '4', label: 'Dante Pro Labs', category: 'certification', status: 'completed',
     description: 'A CPE certification from Hack the Box that is tailored for intermediate penetration testers. It is commonly used as a preparation for the OSCP exam.',
     gained: ['Network tunneling with socks proxies', 'Active Directory exploitation', 'Web application exploitation'],
-    x: 625, y: 1150, from: '3', to: '4'
+    x: 700, y: 1200, from: '3', to: '4'
   },
   {
     id: '5', label: 'Zephyr Pro Labs', category: 'certification', status: 'completed',
     description: 'A CPE certification from Hack the Box that is tailored for intermediate penetration testers. It dives deep into Active Directory exploitation, and various post-exploitation and lateral movement techniques. It is comparable to GOAD and great practice for CRTO',
     gained: ['Domain jumping', 'Lateral movement techniques', 'Active Directory exploitation', 'Post-exploitation techniques', 'AV Evasion'],
-    x: 625, y: 1250, from: '3', to: '5'
+    x: 700, y: 1300, from: '3', to: '5'
   },
   {
     id: '6', label: 'ITC', category: 'competition', status: 'completed',
     description: 'The Information Technology Competition (ITC) is a penetration testing competition similar to CPTC. You are placed in a mock environment and are contracted to perform a vulnerability assessment on the company environment. At the end, you have to submit a professional report of your findings as well as a presentation to the company executives.',
     gained: ['Two time first place', 'Business communication', 'Offensive security skills', 'Report Writing'],
-    x: 250, y: 1300, from: '1', to: '6'
+    x: 300, y: 1300, from: '11', to: '6'
   },
   {
     id: '7', label: 'CPTC', category: 'competition', status: 'completed',
     description: 'Collegiate Penetration Testing Competition (CPTC) is a national level red team competition where collegiate teams compete against each other to perform a penetration test on a mock company environment. It heavily emphasizes business communication and report writing, while also introducing vulnerabilities and tech stacks professionals have seen in the wild.',
     gained: ['Real world expectations', 'Business communication', 'Advanced penetration testing techniques', 'Linux Lead (2024-2025)', 'Windows Lead (2025-2026)'],
-    x: 400, y: 1300, from: '6', to: '7'
+    x: 450, y: 1300, from: '6', to: '7'
   },
   {
     id: '8', label: 'CCDC', category: 'competition', status: 'completed',
     description: 'The Collegiate Cyber Defense Competition (CCDC) is a national level blue team competition where collegiate teams compete against each other to defend a mock company environment from red team attacks. It focuses on network defense, incident response, and system hardening skills, with a large emphasis on business communication.',
     gained: ['Incident response skills', 'Network defense skills', 'Linux system hardening skills', 'Business Lead (2024-2025)'],
-    x: 400, y: 1100, from: '2', to: '8'
+    x: 450, y: 1100, from: '2', to: '8'
   },
   {
     id: '9', label: 'CRTO', category: 'certification', status: 'completed',
     description: 'The Certified Red Team Operator (CRTO) certification from Zero Point Security focuses on adversary simulation and red teaming techniques in Active Directory environments. It covers topics such as initial access, lateral movement, privilege escalation, and persistence within Windows networks. However, it emphasizes C2 utiization, stealth, evasion, and obfuscation techniques to avoid detection.',
     gained: ['Malware obfuscation', 'C2 utilization', 'Advanced Active Directory exploitation', 'Stealth and evasion techniques', 'OPSEC best practices'],
-    x: 750, y: 1300, from: '7', to: '9'
+    x: 700, y: 1425, from: '7', to: '9'
   },
   {
     id: '10', label: 'CRTL', category: 'certification', status: 'in-progress',
     description: "Certified Red Team Leader (CRTL) certification focuses on advanced red teaming and OPSEC techniques. It builds upon the foundational skills learned in the CRTO certification and dives deeper into topics such as how EDR detection works, advanced evasion techniques, and different techniques to maintain persistence without being seen.",
     gained: ['API Call Hooking Understanding', 'General OPSEC'],
-    x: 850, y: 1225, from: '9', to: '10'
-  },
-  {
-    id: '11', label: 'SWIFT', category: 'club', status: 'in-progress',
-    description: "SWIFT (Students With an Interest in the Future of Technology) is the cybersecurity club at Cal Poly Pomona. I became the Director of Competitions and created fun environments for members to compete and learn cybersecurity skills.",
-    gained: ['Recreated known vulnerabilities', 'Hosted CCDC/CPTC bootcamps', 'Directed club competitions', "Hosted RvB competitions for college teams from across the nation"],
-    x: 550, y: 1400, from: '7', to: '11'
+    x: 700, y: 1550, from: '9', to: '10'
   },
   {
     id: '12', label: 'TikTok USDS Internship', category: 'work', status: 'completed',
     description: "Worked as an Adversary Simulation Intern at TikTok USDS where I did R&D and internal purple team engagements to improve CSOC detection capabilities.",
     gained: ['OPSEC', 'Malware Development', 'Purple Team Engagements', 'Phishing', 'Internal MacOS Application Exploitation'],
-    x: 800, y: 1400, from: '9', to: '12'
+    x: 850, y: 1425, from: '9', to: '12'
   },
   {
     id: '13', label: 'Yggdrasil C2', category: 'project', status: 'in-progress',
     description: "Yggdrasil C2 is a self made command and control framework that uses Golang for performance, and the io_uring library for Linux AV/EDR evasion. It also contains various obfuscation techniques.",
     gained: ['Malware Development', 'C2 Framework Design', 'Linux AV/EDR Evasion Techniques', 'Golang', 'C Programming', 'Python'],
-    x: 950, y: 1400, from: '12', to: '13'
+    x: 1000, y: 1425, from: '12', to: '13'
+  },
+  {
+    id: '14', label: 'Malware Development', category: 'project', status: 'in-progress',
+    description: "Started learning malware development and system internals to better understand AV/EDR evasion techniques, as well as implement Windows malware techniques into Linux. Techiniques were heavily inspired by the CRTL course.",
+    gained: ['Linux Internals Understanding', 'C Programming', 'Assembly Language comprehension', 'AV/EDR Evasion Techniques'],
+    x: 850, y: 1550, from: '12', to: '14'
+  },
+  {
+    id: '15', label: 'SHELF Loading', category: 'project', status: 'completed',
+    description: "Developed SHELF Loading PoC, which is the Linux equivalent of Windows reflective DLL loading. By manually injecting shellcode of an ELF loader, attackers can avoid use of the execve family and load payloads directly into memory, providing a stealthy method for executing malicious code without touching the disk.",
+    gained: ['Linux Internals Understanding', 'ELF Format Understanding', 'C Programming', 'AV/EDR Evasion Techniques'],
+    x: 950, y: 1625, from: '14', to: '15'
   },
 ];
 
@@ -128,20 +140,23 @@ export const ROADMAP: RoadmapNode[] = [
 
 // Edges represent connections between nodes by their IDs
 export const EDGES = [
-  { from: '1', to: '2' },
+  { from: '11', to: '2' },
   { from: '7', to: '3' },
   { from: '3', to: '4' },
   { from: '3', to: '5' },
-  { from: '1', to: '6' },
+  { from: '11', to: '6' },
   { from: '6', to: '7' },
   { from: '2', to: '8' },
   { from: '7', to: '9' },
   { from: '5', to: '9' },
   { from: '9', to: '10' },
-  { from: '7', to: '11' },
+  { from: '1', to: '11' },
   { from: '9', to: '12' },
-  { from: '11', to: '12' },
+  { from: '9', to: '12' },
   { from: '12', to: '13' },
+  { from: '12', to: '14' },
+  { from: '14', to: '15' },
+  { from: '10', to: '14' },
 ];
 
 
