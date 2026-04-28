@@ -1,5 +1,5 @@
 ![Group Photo](/blogs/0/ITCgroup.jpeg)
-
+# **ITC Writeup**
 # Table of Contents
 1. [About the Team](#about-the-team)
 2. [Overview of the Competition](#overview-of-the-competition)

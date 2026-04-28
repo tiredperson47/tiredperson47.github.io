@@ -1,6 +1,6 @@
 
 ![Authority Logo](/blogs/1/Authority.png)
-
+# **Authority HTB Writeup**
 # Table of Contents
 1. [Overview](#overview)
 2. [Enumeration](#enumeration)
