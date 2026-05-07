@@ -5,8 +5,8 @@ import { X, FileText, ArrowUp } from 'lucide-react';
 import { BLOGS } from '../constants';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/atom-one-dark.css';
 
 interface BlogViewProps {
   theme: 'dark' | 'light';
@@ -135,7 +135,11 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
               prose-a:hover:after:w-full
             ">
             <ReactMarkdown
-              rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
+              rehypePlugins={[
+                rehypeSlug,
+                [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                rehypeHighlight
+              ]}
               components={{
                 h1: ({node, ...props}) => (
                   <h1 className="text-3xl font-bold mt-10 mb-4 text-[#00f5d4] scroll-mt-24" {...props} />
@@ -190,22 +194,8 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
                 ),
                 code: ({node, className, children, ...props}: any) => {
                   const match = /language-(\w+)/.exec(className || '');
-                  return match ? (
-                    <SyntaxHighlighter
-                      {...props}
-                      style={vscDarkPlus}
-                      language={match[1]}
-                      PreTag="div"
-                      customStyle={{
-                        background: 'transparent',
-                        padding: 0,
-                        margin: 0,
-                      }}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className="bg-[#010409] text-[#00f5d4] px-1.5 py-0.5 rounded mono text-sm" {...props}>
+                  return (
+                    <code className={match ? className : "bg-[#010409] text-[#00f5d4] px-1.5 py-0.5 rounded mono text-sm"} {...props}>
                       {children}
                     </code>
                   );
