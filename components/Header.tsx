@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ title, isMobile = false }) => {
   return (
     <header className="h-12 md:h-16 border-b border-[#30363d] bg-[#161b22] flex items-center justify-between px-4 md:px-6 z-20">
       <div className="flex items-center space-x-4">
-        <h1 className="text-[11px] md:text-sm font-bold tracking-widest mono text-[#00f5d4] truncate">{title}</h1>
+        <h1 className="text-sm md:text-xl font-bold tracking-widest mono text-[#00f5d4] truncate">{title}</h1>
       </div>
 
       <div className="flex items-center space-x-3">
