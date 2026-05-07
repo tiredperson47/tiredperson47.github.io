@@ -5,6 +5,8 @@ import { X, FileText, ArrowUp } from 'lucide-react';
 import { BLOGS } from '../constants';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface BlogViewProps {
   theme: 'dark' | 'light';
@@ -186,9 +188,28 @@ const BlogView: React.FC<BlogViewProps> = ({ theme }) => {
                 pre: ({node, ...props}) => (
                   <pre className="bg-[#010409] border border-[#30363d] p-4 rounded-lg overflow-x-auto my-6" {...props} />
                 ),
-                code: ({node, ...props}) => (
-                  <code className="bg-[#010409] text-[#00f5d4] px-1.5 py-0.5 rounded mono text-sm" {...props} />
-                ),
+                code: ({node, className, children, ...props}: any) => {
+                  const match = /language-(\w+)/.exec(className || '');
+                  return match ? (
+                    <SyntaxHighlighter
+                      {...props}
+                      style={vscDarkPlus}
+                      language={match[1]}
+                      PreTag="div"
+                      customStyle={{
+                        background: 'transparent',
+                        padding: 0,
+                        margin: 0,
+                      }}
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code className="bg-[#010409] text-[#00f5d4] px-1.5 py-0.5 rounded mono text-sm" {...props}>
+                      {children}
+                    </code>
+                  );
+                },
                 hr: () => <hr className="border-[#30363d] my-8" />,
                 a: ({ node, ...props }) => {
                   const href = props.href || '';
